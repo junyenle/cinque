@@ -1,4 +1,5 @@
 import torch
+import pickle
 # from utils import PE, get_permutations
 torch.manual_seed(0)
 
@@ -37,12 +38,12 @@ def get_training_example(line, reverse):
     return torch.FloatTensor(adj1floats), torch.FloatTensor(adj2floats), torch.FloatTensor(y)
 
 DEBUGPRINTINTERVAL = 1000 # how often to print where we are
-DEBUGLIMIT = 200000 # number of inputs to consider
+DEBUGLIMIT = 20000 # number of inputs to consider
 LR = 0.01 # learning rate
 TRAIN = True
 SAVEMODEL = True
 MODELFILE = "wmodel"
-TEST = False
+TEST = True
 
 # initialize weights to random numbers
 w = torch.randn((300, 300), requires_grad=True)
@@ -57,7 +58,7 @@ if TRAIN:
         
         for value in [True, False]:
             adj1, adj2, y_obs = get_training_example(line, value)
-            y_pred = torch.matmul(torch.matmul(torch.t(adj1), w), adj2)
+            y_pred = torch.sigmoid(torch.matmul(torch.matmul(torch.t(adj1), w), adj2))
             mse = torch.mean((y_pred - y_obs) ** 2)
             mse.backward()
             with torch.no_grad():
@@ -67,9 +68,10 @@ if TRAIN:
         save_model(MODELFILE, w)
             
 if TEST:
+    correct = 0
+    incorrect = 0
     w = load_model(MODELFILE)
     w.requires_grad = False
-    # testing file
     tfile = open("/mnt/d/testvecs.txt", "r")
     for ti, line in enumerate(tfile):
         if ti == DEBUGLIMIT:
@@ -78,6 +80,10 @@ if TEST:
             print("ti = {}".format(ti))
         for value in [True, False]:
             adj1, adj2, y_obs = get_training_example(line, value)
-            y_pred = torch.matmul(torch.matmul(torch.t(adj1), w), adj2)
-            mse = torch.mean((y_pred - y_obs) ** 2)
-            print("correct: {}, predicted: {}".format(y_obs, y_pred))
+            y_pred = torch.sigmoid(torch.matmul(torch.matmul(torch.t(adj1), w), adj2))
+            if (y_pred.item() > 0.5 and y_obs.item() == 1) or (y_pred.item() <= 0.5 and y_obs.item() == 0):
+                correct += 1
+            else:
+                incorrect += 1    
+            # print("correct: {}, predicted: {}".format(y_obs, y_pred))
+    print("Accuracy: {}".format(correct / (correct + incorrect)))
