@@ -26,11 +26,14 @@ def data_loader(dataset):
     train_set, valid_set, test_set = data_set['train'], data_set['valid'], data_set['test']
 
     Xtrain = train_set[0]
+    print(Xtrain)
     Ytrain = train_set[1]
+    #print(Ytrain)
     Xvalid = valid_set[0]
     Yvalid = valid_set[1]
     Xtest = test_set[0]
     Ytest = test_set[1]
+    # print(Ytest)
 
     return np.array(Xtrain), np.array(Ytrain), np.array(Xvalid),\
            np.array(Yvalid), np.array(Xtest), np.array(Ytest)
