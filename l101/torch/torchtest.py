@@ -1,7 +1,10 @@
 import torch
 import pickle
-# from utils import PE, get_permutations
-torch.manual_seed(0)
+from gensim.models import FastText as ft
+from gensim.test.utils import get_tmpfile
+from gensim.test.utils import datapath
+from gensim.models.fasttext import load_facebook_vectors
+from utils import PE, get_permutations
 
 def save_model(filename, model):
     file = open(filename, "wb")
@@ -14,76 +17,217 @@ def load_model(filename):
     file.close()
     return model
 
-def get_training_example(line, reverse):    
-    """ input: string line from input file
-        output: adj1 embedding (1 x 300), adj2 embedding (1 x 300), correct output (scalar) """
+def get_permutations_of_embeddings(line, fbmodel):    
+    """ input: string of words in form noun adj adj adj....
+        output: list of lists, each inner list is a list of fasttext word embeddings
+        basically, "give me the list of word embeddings for each possible permutation, and let the first permutation be the correct one" """
+    #print(line)
     linearr = line.split()
-    if reverse:
-        adj1arr = linearr[301:]
-        adj2arr = linearr[1:301]
-    else:
-        adj1arr = linearr[1:301]
-        adj2arr = linearr[301:]
-    adj1floats = []
-    adj2floats = []
-    for item in adj1arr:
-        adj1floats.append(float(item))
-    for item in adj2arr:
-        adj2floats.append(float(item))
-    y = []
-    if reverse:
-        y.append(0)
-    else:
-        y.append(1)       
-    return torch.FloatTensor(adj1floats), torch.FloatTensor(adj2floats), torch.FloatTensor(y)
+    adjs = linearr[1:]
+    permutations = get_permutations(adjs)
+    correctpermutation = permutations[0]
 
+    # fill an array with arrays of floats, each an embedding
+    # index 0 contains the correct embedding
+    allpermutationembeddings = []
+    for permutation in permutations:
+        permutationembedding = []
+        for adj in permutation:
+            permutationembedding.append(fbmodel.wv[adj])
+        allpermutationembeddings.append(permutationembedding)
+
+    return allpermutationembeddings
 DEBUGPRINTINTERVAL = 1000 # how often to print where we are
-DEBUGLIMIT = 20000 # number of inputs to consider
-LR = 0.01 # learning rate
-TRAIN = True
-SAVEMODEL = True
+DEBUGLIMIT = 1000000 # number of inputs to consider
+TRAIN = False
 MODELFILE = "wmodel"
+SAVEMODEL = True
 TEST = True
+EPOCHS = 3
+LRCONFIG = 0.01 # learning rate
+LRDECAYRATE = 0.1
 
-# initialize weights to random numbers
+# load fbmodel (fasttext)
+print("loading fb model")
+path = datapath("/mnt/d/cc.en.300.bin/cc.en.300.bin")
+fbmodel = load_facebook_vectors(path)
+
+# initialize W matrix
+torch.manual_seed(0)
 w = torch.randn((300, 300), requires_grad=True)
 
 if TRAIN:
-    tfile = open("/mnt/d/trainvecs.txt", "r")
-    for ti, line in enumerate(tfile):
-        if ti == DEBUGLIMIT:
-            break
-        if ti % DEBUGPRINTINTERVAL == 0:
-            print("ti = {}".format(ti))
+    print("TRAINING MODE")
+    for epoch in range(EPOCHS):
+        # set the LR
+        LR = LRCONFIG * (LRDECAYRATE ** epoch)
         
-        for value in [True, False]:
-            adj1, adj2, y_obs = get_training_example(line, value)
-            y_pred = torch.sigmoid(torch.matmul(torch.matmul(torch.t(adj1), w), adj2))
-            mse = torch.mean((y_pred - y_obs) ** 2)
-            mse.backward()
-            with torch.no_grad():
-                w = w - LR * w.grad
-            w.requires_grad = True
+        tfile = open("/mnt/d/train.txt", "r")
+        # for each train input line
+        for ti, line in enumerate(tfile):
+            # with torch.autograd.detect_anomaly(): # catching nans - TODO: remove when finished debugging
+                if ti == DEBUGLIMIT: # end early
+                    break
+                # if ti < 126400:
+                    # continue
+                if ti % DEBUGPRINTINTERVAL == 0: # print progress
+                    print("epoch = {} ti = {}".format(epoch, ti))
+                    
+                # check for bad input
+                numwords = len(line.split())
+                if numwords > 7 or numwords < 3:
+                    continue
+                # get permutations
+                permutationembeddings = get_permutations_of_embeddings(line, fbmodel)
+                
+                # variables for computing negative log likelihood
+                negativell = torch.tensor(0., requires_grad = True)
+                scores = []
+                
+                # for each permutation, compute score
+                for pei, permutationembedding in enumerate(permutationembeddings):
+                    # correct embedding from train file
+                    if pei == 0:
+                        score = torch.tensor(0., requires_grad = True)
+                        for adji, adjembedding in enumerate(permutationembedding):
+                            if adji == 0:
+                                continue
+                            else:
+                                # A
+                                adj1e = torch.FloatTensor(permutationembedding[adji - 1])
+                                # B
+                                adj2e = torch.FloatTensor(adjembedding)
+                                # A W B
+                                score = score + torch.matmul(torch.matmul(torch.t(adj1e), w), adj2e)
+                        negativell = negativell - score # the first part of negative log likelihood
+                        scores.append(score) # the second part of negative log likelihood
+                    # incorrect embeddings
+                    else:
+                        score = torch.tensor(0., requires_grad = True)
+                        for adji, adjembedding in enumerate(permutationembedding):
+                            if adji == 0:
+                                continue
+                            else:
+                                # A
+                                adj1e = torch.FloatTensor(permutationembedding[adji - 1])
+                                # B
+                                adj2e = torch.FloatTensor(adjembedding)
+                                # A W B
+                                score = score + torch.matmul(torch.matmul(torch.t(adj1e), w), adj2e)
+                        scores.append(score) # the second part of negative log likelihood
+                
+                # compute negative log likelihood
+                negativelldenominator = torch.logsumexp(torch.FloatTensor(scores), 0)
+                negativell = negativell + negativelldenominator
+                if ti % DEBUGPRINTINTERVAL == 0:
+                    print("current loss is {}".format(negativell.item()))
+                # backward pass and gradient updates
+                negativell.backward()
+                with torch.no_grad():
+                    w = w - LR * w.grad
+                # reset requires_grad for the next iteration
+                w.requires_grad = True
+        tfile.close()
     if SAVEMODEL:
         save_model(MODELFILE, w)
+        print(w)
             
 if TEST:
+    print("TESTING MODE")
+    # variables for computing accuracy
     correct = 0
     incorrect = 0
+    # variable for computing sum negative log likelihood
+    sumnll = 0
+    consideredcases = 0
+    
+    # load w from file
+    print("loading trained W matrix")
     w = load_model(MODELFILE)
     w.requires_grad = False
-    tfile = open("/mnt/d/testvecs.txt", "r")
+    
+    tfile = open("../data/test.txt", "r")
+    # for each test input line
     for ti, line in enumerate(tfile):
-        if ti == DEBUGLIMIT:
+        if ti == DEBUGLIMIT: # end early
             break
-        if ti % DEBUGPRINTINTERVAL == 0:
+        if ti % DEBUGPRINTINTERVAL == 0: # print progress
             print("ti = {}".format(ti))
-        for value in [True, False]:
-            adj1, adj2, y_obs = get_training_example(line, value)
-            y_pred = torch.sigmoid(torch.matmul(torch.matmul(torch.t(adj1), w), adj2))
-            if (y_pred.item() > 0.5 and y_obs.item() == 1) or (y_pred.item() <= 0.5 and y_obs.item() == 0):
-                correct += 1
+                            
+        # check for bad input
+        numwords = len(line.split())
+        if numwords > 7 or numwords < 3:
+            continue
+        
+        # increase our considered counter
+        consideredcases += 1
+            
+        # variables for picking the best score
+        bestscore = -10000
+        correctscore = -10000
+        wrong = False
+        
+        # get permutations
+        permutationembeddings = get_permutations_of_embeddings(line, fbmodel)
+        
+        # variables for computing negative log likelihood
+        negativell = torch.tensor(0)
+        scores = [] # negativelldenominator = torch.tensor(0)
+        
+        # for each permutation, compute score
+        for pei, permutationembedding in enumerate(permutationembeddings):
+            # correct embedding from test file
+            if pei == 0:
+                score = torch.tensor(0)
+                for adji, adjembedding in enumerate(permutationembedding):
+                    if adji == 0:
+                        continue
+                    else:
+                        # A
+                        adj1e = torch.FloatTensor(permutationembedding[adji - 1])
+                        # B
+                        adj2e = torch.FloatTensor(adjembedding)
+                        # A W B
+                        score = score + torch.matmul(torch.matmul(torch.t(adj1e), w), adj2e)
+                negativell = negativell - score # the first part of negative log likelihood
+                scores.append(score) # the first part of negative log likelihood
+                
+                # score updating
+                rawscore = score.item()
+                correctscore = rawscore
+                bestscore = rawscore
+                
+            # incorrect embeddings from test file
             else:
-                incorrect += 1    
-            # print("correct: {}, predicted: {}".format(y_obs, y_pred))
+                score = torch.tensor(0)
+                for adji, adjembedding in enumerate(permutationembedding):
+                    if adji == 0:
+                        continue
+                    else:
+                        # A
+                        adj1e = torch.FloatTensor(permutationembedding[adji - 1])
+                        # B
+                        adj2e = torch.FloatTensor(adjembedding)
+                        # A W B
+                        score = score + torch.matmul(torch.matmul(torch.t(adj1e), w), adj2e)
+                        
+                # score updating
+                rawscore = score.item()
+                scores.append(score)
+                if not wrong: # TODO: this does not allow us to print the highest scoring permutation
+                    if rawscore >= bestscore:
+                        bestscore = rawscore
+                        incorrect += 1
+                        wrong = True
+        # compute negative log likelihood
+        negativelldenominator = torch.logsumexp(torch.FloatTensor(scores), 0)
+        negativell = negativell + negativelldenominator
+        # update sum negative log likelihood
+        sumnll += negativell.item()
+            
+        # did we pick the best score?
+        if not wrong:
+            correct += 1 
     print("Accuracy: {}".format(correct / (correct + incorrect)))
+    print("Average Negative Log Likelihood: {} ({}/{})".format(sumnll / consideredcases, sumnll, consideredcases))
+    
