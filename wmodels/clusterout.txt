@@ -1,0 +1,280 @@
+
+cluster: (2, 5)
+score: 38.82027032503
+left words: ['new', 'own', 'key', 'big']
+right words: ['new', 'key', 'big']
+
+cluster: (2, 4)
+score: 33.79962161716905
+left words: ['new', 'own', 'key', 'big']
+right words: ['own', 'low', 'top']
+
+cluster: (7, 5)
+score: 30.270623675423316
+left words: ['old', 'top', 'red']
+right words: ['new', 'key', 'big']
+
+cluster: (3, 5)
+score: 27.625540225163125
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['new', 'key', 'big']
+
+cluster: (7, 4)
+score: 27.139487370720943
+left words: ['old', 'top', 'red']
+right words: ['own', 'low', 'top']
+
+cluster: (9, 5)
+score: 24.735826078961665
+left words: ['last', 'next', 'past']
+right words: ['new', 'key', 'big']
+
+cluster: (3, 4)
+score: 23.920374278490872
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['own', 'low', 'top']
+
+cluster: (2, 1)
+score: 22.26554354121979
+left words: ['new', 'own', 'key', 'big']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (0, 5)
+score: 22.064319417438348
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['new', 'key', 'big']
+
+cluster: (9, 4)
+score: 20.529752418703996
+left words: ['last', 'next', 'past']
+right words: ['own', 'low', 'top']
+
+cluster: (2, 8)
+score: 20.431729860037677
+left words: ['new', 'own', 'key', 'big']
+right words: ['white', 'black']
+
+cluster: (0, 4)
+score: 19.443684051956318
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['own', 'low', 'top']
+
+cluster: (7, 8)
+score: 18.20309680227589
+left words: ['old', 'top', 'red']
+right words: ['white', 'black']
+
+cluster: (5, 5)
+score: 17.87451399882371
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['new', 'key', 'big']
+
+cluster: (7, 1)
+score: 17.500766037640446
+left words: ['old', 'top', 'red']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (2, 9)
+score: 16.545533806651466
+left words: ['new', 'own', 'key', 'big']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (3, 1)
+score: 15.93354210601785
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (5, 4)
+score: 15.432603980625736
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['own', 'low', 'top']
+
+cluster: (8, 5)
+score: 15.325499332755872
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['new', 'key', 'big']
+
+cluster: (2, 3)
+score: 14.700357222385128
+left words: ['new', 'own', 'key', 'big']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (3, 8)
+score: 14.386326938500048
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['white', 'black']
+
+cluster: (9, 1)
+score: 14.094558645918415
+left words: ['last', 'next', 'past']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (8, 4)
+score: 13.521268934969946
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['own', 'low', 'top']
+
+cluster: (7, 9)
+score: 13.26261807972999
+left words: ['old', 'top', 'red']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (0, 1)
+score: 12.746088780748327
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (3, 9)
+score: 11.967824657078703
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (0, 8)
+score: 11.895017030270393
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['white', 'black']
+
+cluster: (9, 8)
+score: 11.662305159078153
+left words: ['last', 'next', 'past']
+right words: ['white', 'black']
+
+cluster: (7, 3)
+score: 11.556962352503268
+left words: ['old', 'top', 'red']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (9, 9)
+score: 11.460096457284857
+left words: ['last', 'next', 'past']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (5, 1)
+score: 10.283661968327943
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (3, 3)
+score: 9.986277552190577
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (2, 0)
+score: 9.70655098313179
+left words: ['new', 'own', 'key', 'big']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (0, 9)
+score: 9.402427474938586
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (5, 8)
+score: 9.166530692761032
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['white', 'black']
+
+cluster: (8, 1)
+score: 8.86544663361571
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (8, 8)
+score: 8.5548701596483
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['white', 'black']
+
+cluster: (0, 3)
+score: 8.457130143660224
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (1, 5)
+score: 8.378812531404664
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['new', 'key', 'big']
+
+cluster: (5, 9)
+score: 8.213189633763875
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (9, 3)
+score: 8.111757977531783
+left words: ['last', 'next', 'past']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (1, 4)
+score: 7.443513622758745
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['own', 'low', 'top']
+
+cluster: (7, 0)
+score: 7.387318862457663
+left words: ['old', 'top', 'red']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (3, 0)
+score: 6.760747218128959
+left words: ['many', 'good', 'only', 'same', 'long', 'much', 'very']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (8, 9)
+score: 6.52838558505943
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (5, 3)
+score: 6.309650103169862
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (8, 3)
+score: 5.947192530889565
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (9, 0)
+score: 5.782745251984478
+left words: ['last', 'next', 'past']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (0, 0)
+score: 5.552749636759879
+left words: ['other', 'such', 'major', 'small', 'large', 'great', 'free', 'high', 'full', 'main', 'real', 'basic', 'open']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (1, 1)
+score: 4.863815322485714
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['other', 'many', 'such', 'good', 'major', 'small', 'large', 'great', 'young', 'free', 'high', 'only', 'full', 'same', 'main', 'real', 'basic', 'open', 'much', 'very']
+
+cluster: (1, 8)
+score: 4.551061951786997
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['white', 'black']
+
+cluster: (5, 0)
+score: 4.313352242435292
+left words: ['first', 'early', 'recent', 'second', 'short', 'late']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (8, 0)
+score: 3.8564432323288527
+left words: ['local', 'several', 'little', 'young', 'various', 'legal', 'human', 'modern', 'single', 'strong', 'certain', 'white', 'black', 'common', 'whole', 'simple']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
+
+cluster: (1, 9)
+score: 3.545833985399768
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['first', 'several', 'little', 'last', 'next', 'early', 'long', 'strong', 'recent', 'past', 'short', 'whole', 'late', 'simple']
+
+cluster: (1, 3)
+score: 3.416167756769841
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['local', 'public', 'social', 'national', 'european', 'british', 'political', 'legal', 'human', 'modern', 'medical', 'economic', 'single', 'american', 'english', 'private', 'academic', 'global', 'natural', 'common', 'military', 'digital', 'clinical']
+
+cluster: (1, 0)
+score: 2.187316793166135
+left words: ['different', 'public', 'international', 'financial', 'social', 'national', 'european', 'online', 'british', 'political', 'personal', 'current', 'special', 'important', 'professional', 'medical', 'general', 'economic', 'american', 'traditional', 'english', 'relevant', 'annual', 'independent', 'private', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'academic', 'specific', 'global', 'possible', 'natural', 'significant', 'technical', 'military', 'scientific', 'potential', 'future', 'individual', 'digital', 'excellent', 'clinical', 'contemporary']
+right words: ['different', 'international', 'financial', 'online', 'personal', 'various', 'current', 'special', 'important', 'professional', 'general', 'traditional', 'relevant', 'annual', 'independent', 'certain', 'educational', 'environmental', 'additional', 'leading', 'commercial', 'second', 'specific', 'possible', 'significant', 'technical', 'scientific', 'potential', 'future', 'individual', 'excellent', 'contemporary']
